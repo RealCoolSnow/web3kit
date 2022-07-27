@@ -5,6 +5,10 @@ module.exports = {
   reactStrictMode: true,
   i18n,
   productionBrowserSourceMaps: false, //生产环境source map
+  compiler: {
+    styledComponents: true,
+  },
+  poweredByHeader: false,
   typescript: {
     //构建时忽略ts错误
     ignoreBuildErrors: false,

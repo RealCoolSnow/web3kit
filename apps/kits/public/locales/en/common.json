@@ -1,8 +1,5 @@
 {
   "home": "Home",
   "about": "About",
-  "about_page_desc": "This is about page",
-  "footer": {
-    "description": "Copyright © 2022 Web3Kit.APP"
-  }
+  "about_page_desc": "This is about page"
 }

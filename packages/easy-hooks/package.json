@@ -1,0 +1,46 @@
+{
+  "name": "easy-hooks",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [],
+  "license": "ISC",
+  "author": "",
+  "main": "lib/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build:js:cjs": "babel --config-file ./babel.cjs.json src --no-comments --extensions \".ts,.tsx\" --out-dir lib",
+    "build:types:cjs": "tsc --emitDeclarationOnly",
+    "build:js:esm": "babel --config-file ./babel.esm.json src --no-comments --extensions \".ts,.tsx\" --out-dir dist",
+    "build:types:esm": "tsc --emitDeclarationOnly --p tsconfig.esm.json",
+    "build:cjs": "npm run build:js:cjs && npm run build:types:cjs",
+    "build:esm": "npm run build:js:esm && npm run build:types:esm",
+    "build": "npm run build:cjs && npm run build:esm",
+    "clean": "rimraf dist && rimraf lib",
+    "lint": "eslint src/**/* --fix",
+    "types:check": "tsc --noEmit",
+    "types:watch": "npm run types:check -- --watch",
+    "start": "npm run build:js -- --watch"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.18.9",
+    "@babel/core": "^7.18.9",
+    "@babel/plugin-proposal-class-properties": "^7.18.6",
+    "@babel/plugin-transform-typescript": "^7.18.8",
+    "@babel/preset-env": "^7.18.9",
+    "@babel/preset-react": "^7.18.6",
+    "@babel/preset-typescript": "^7.18.6",
+    "@typescript-eslint/eslint-plugin": "^5.31.0",
+    "@typescript-eslint/parser": "^5.31.0",
+    "eslint": "^8.20.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.6.1",
+    "eslint-plugin-react": "^7.30.1",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.7.2"
+  },
+  "peerDependencies": {
+    "react": "^18.1.0"
+  }
+}
