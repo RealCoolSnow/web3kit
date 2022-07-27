@@ -1,10 +1,11 @@
 import Script from 'next/script'
 
 const SiteAnalytics = () => {
+  const gid = 'G-ZSBSFPKFQV'
   return (
     <>
       <Script
-        src="https://www.googletagmanager.com/gtag/js?id=G-ZSBSFPKFQV"
+        src={`https://www.googletagmanager.com/gtag/js?id=${gid}`}
         strategy="afterInteractive"
       />
       <Script id="google-analytics" strategy="afterInteractive">
@@ -13,7 +14,7 @@ const SiteAnalytics = () => {
           function gtag(){window.dataLayer.push(arguments);}
           gtag('js', new Date());
 
-          gtag('config', 'G-ZSBSFPKFQV');
+          gtag('config', '${gid}');
         `}
       </Script>
     </>

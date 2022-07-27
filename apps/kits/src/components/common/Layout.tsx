@@ -2,16 +2,20 @@ import { useTranslation } from 'next-i18next'
 import Head from 'next/head'
 import { ReactElement } from 'react'
 import LocaleSwitch from '../LocaleSwitch'
+import SiteAnalytics from '../third-party/SiteAnalytics'
 import NavBar from './NavBar'
 
 // Header
 const Header = () => {
   return (
     <Head>
-      <meta name="description" content="nextjs-quick-start" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+      <meta name="description" content="web3kit" />
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=no"
+      />
       <link rel="icon" href="/favicon.ico" />
-      <title>nextjs-quick-start</title>
+      <title>web3kit</title>
     </Head>
   )
 }
@@ -28,6 +32,7 @@ const Footer = () => {
       >
         {t('footer.description')}
       </a>
+      <SiteAnalytics />
     </footer>
   )
 }
