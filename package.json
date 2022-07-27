@@ -6,6 +6,7 @@
   "license": "MIT",
   "author": "CoolSnow(coolsnow2020@gmail.com)",
   "scripts": {
+    "analyze": "turbo run analyze",
     "build": "turbo run build",
     "clean": "rimraf **/dist **/.turbo **/node_modules **/.next",
     "dev": "turbo run dev --parallel --no-cache",

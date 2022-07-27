@@ -1,7 +1,12 @@
 /** @type {import('next').NextConfig} */
+const compose = require('next-compose-plugins')
 const { i18n } = require('./next-i18next.config')
+const withBundleAnalyzer = require('@next/bundle-analyzer')({ enabled: process.env.ANALYZE == 'true' })
+const withTM = require('next-transpile-modules')([
+  'antd-mobile',
+]);
 
-module.exports = {
+const config = {
   reactStrictMode: true,
   i18n,
   productionBrowserSourceMaps: false, //生产环境source map
@@ -41,3 +46,8 @@ module.exports = {
     ]
   },
 }
+
+module.exports = compose(
+  [withTM, withBundleAnalyzer],
+  config
+)

@@ -5,6 +5,7 @@
   "license": "MIT",
   "author": "CoolSnow(coolsnow2020@gmail.com)",
   "scripts": {
+    "analyze": "ANALYZE=true next build",
     "build": "next build",
     "dev": "next dev",
     "export": "next build && next export",
@@ -22,6 +23,7 @@
     "@types/js-cookie": "^3.0.2",
     "@walletconnect/web3-provider": "^1.7.8",
     "aegis-web-sdk": "^1.35.28",
+    "antd-mobile": "^5.19.0",
     "axios": "^0.27.2",
     "bignumber.js": "^9.0.2",
     "easy-hooks": "workspace:*",
@@ -39,6 +41,7 @@
   },
   "devDependencies": {
     "@headlessui/tailwindcss": "^0.1.0",
+    "@next/bundle-analyzer": "^12.2.3",
     "@tailwindcss/forms": "^0.5.2",
     "@tailwindcss/line-clamp": "^0.4.0",
     "@types/react": "^18.0.9",
@@ -49,6 +52,8 @@
     "eslint": "^8.16.0",
     "eslint-config-next": "^12.1.6",
     "eslint-config-prettier": "^8.5.0",
+    "next-compose-plugins": "^2.2.1",
+    "next-transpile-modules": "^9.0.0",
     "postcss": "latest",
     "postcss-import": "^14.1.0",
     "tailwind-scrollbar-hide": "^1.1.7",

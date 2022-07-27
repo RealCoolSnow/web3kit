@@ -13,6 +13,9 @@
     "pm2start": {
       "cache": false
     },
+    "analyze": {
+      "cache": false
+    },
     "build": {
       "dependsOn": [
         "^build"
