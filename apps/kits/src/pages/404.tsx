@@ -2,6 +2,7 @@ import Image from 'next/image'
 import img404 from '@/assets/404.gif'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useTranslation } from 'next-i18next'
+import Link from 'next/link'
 
 export default function Page404() {
   const { t } = useTranslation('404')
@@ -16,9 +17,9 @@ export default function Page404() {
       <span className="sr-only">404, page not found</span>
       <span className="text-[#818086] text-center [&>a]:px-1 [&>a]:underline [&>a]:text-primary-200 [&>a]:underline-offset-1 [&>a]:transition-colors [&>a:hover]:text-primary-200/80 ">
         {t('page_not_found')}
-        <a href="/" className="ml-2">
+        <Link href="/" className="ml-2">
           {t('go_home')}
-        </a>
+        </Link>
       </span>
     </div>
   )
