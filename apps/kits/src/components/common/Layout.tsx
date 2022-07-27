@@ -45,15 +45,7 @@ const Layout = ({ children }: Props) => {
   return (
     <>
       <Header />
-      <main>
-        <div className="text-right">
-          <LocaleSwitch />
-        </div>
-        <div className="mt-6">
-          <NavBar />
-        </div>
-        <div className="mt-6">{children}</div>
-      </main>
+      <main>{children}</main>
       <Footer />
     </>
   )
