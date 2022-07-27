@@ -1,5 +1,7 @@
+import { store } from '@/store'
 import { AppProps } from 'next/app'
 import { ComponentType } from 'react'
+import { Provider } from 'react-redux'
 
 export interface LayoutProps<LayoutOptions = {}> {
   children: React.ReactNode
@@ -12,9 +14,15 @@ const LAYOUT_SYM = Symbol('next-layout')
 
 export type LayoutSettings<LayoutOptions = {}> =
   | ComponentType<LayoutProps>
-  | [ComponentType<LayoutProps<LayoutOptions>>, LayoutOptions | ((pageProps: any) => LayoutOptions)]
+  | [
+      ComponentType<LayoutProps<LayoutOptions>>,
+      LayoutOptions | ((pageProps: any) => LayoutOptions)
+    ]
 
-export type LayoutComponent<C extends ComponentType<any>, LayoutOptions = {}> = C & {
+export type LayoutComponent<
+  C extends ComponentType<any>,
+  LayoutOptions = {}
+> = C & {
   [LAYOUT_SYM]?: LayoutSettings<LayoutOptions>[]
 }
 
@@ -35,7 +43,9 @@ export function generateLayout(...layout: LayoutSettings<any>[]) {
 }
 
 function unique<T>(arr: T[]) {
-  return arr.filter((item, index, self) => index === self.findIndex(t => t === item))
+  return arr.filter(
+    (item, index, self) => index === self.findIndex((t) => t === item)
+  )
 }
 
 export function Layout({ Component, pageProps }: AppProps) {
@@ -46,18 +56,27 @@ export function Layout({ Component, pageProps }: AppProps) {
     return layouts.reduce((children, settings) => {
       if (Array.isArray(settings)) {
         const ComponentLayout = settings[0]
-        const options = typeof settings[1] === 'function' ? settings[1](pageProps) : settings[1]
+        const options =
+          typeof settings[1] === 'function'
+            ? settings[1](pageProps)
+            : settings[1]
         return (
-          <ComponentLayout Component={Component} pageProps={pageProps} options={options}>
+          <ComponentLayout
+            Component={Component}
+            pageProps={pageProps}
+            options={options}
+          >
             {children}
           </ComponentLayout>
         )
       }
       const ComponentLayout = settings
       return (
-        <ComponentLayout Component={Component} pageProps={pageProps}>
-          {children}
-        </ComponentLayout>
+        <Provider store={store}>
+          <ComponentLayout Component={Component} pageProps={pageProps}>
+            {children}
+          </ComponentLayout>
+        </Provider>
       )
     }, children)
   }
