@@ -1,0 +1,26 @@
+{
+  "npmClient": "pnpm",
+  "pipeline": {
+    "test": {
+      "cache": false
+    },
+    "dev": {
+      "cache": false
+    },
+    "build": {
+      "dependsOn": [
+        "^build"
+      ],
+      "outputs": [
+        "dist/**",
+        ".umi/**",
+        ".next/**"
+      ]
+    },
+    "deploy": {
+      "dependsOn": [
+        "build"
+      ]
+    }
+  }
+}
