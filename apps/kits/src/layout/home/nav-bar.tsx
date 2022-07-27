@@ -22,21 +22,26 @@ const ConnectWallet = dynamic(() => import('@/components/ConnectWallet'), {
   ssr: false,
 })
 
+type Anchor = 'top' | 'left' | 'bottom' | 'right'
+
 export const NavBar = memo(function NavBar() {
   const drawerAnchor = 'left'
   const logoSize = 32
   const [drawerOpen, setDrawerOpen] = useState(false)
   const { t } = useTranslation(['common'])
-  const toggleDrawer = (open: boolean) => (event: KeyboardEvent) => {
-    if (
-      event &&
-      event.type === 'keydown' &&
-      (event.key === 'Tab' || event.key === 'Shift')
-    ) {
-      return
+  const toggleDrawer =
+    (anchor: Anchor, open: boolean) =>
+    (event: React.KeyboardEvent | React.MouseEvent) => {
+      if (
+        event &&
+        event.type === 'keydown' &&
+        ((event as React.KeyboardEvent).key === 'Tab' ||
+          (event as React.KeyboardEvent).key === 'Shift')
+      ) {
+        return
+      }
+      setDrawerOpen(open)
     }
-    setDrawerOpen(open)
-  }
   const menuList = [
     {
       title: 'Home',
@@ -51,8 +56,8 @@ export const NavBar = memo(function NavBar() {
     <Box
       sx={{ width: 250 }}
       role="presentation"
-      onClick={toggleDrawer(false)}
-      onKeyDown={toggleDrawer(false)}
+      onClick={toggleDrawer(drawerAnchor, false)}
+      onKeyDown={toggleDrawer(drawerAnchor, false)}
     >
       <List>
         {menuList.map((item, index) => (
@@ -75,11 +80,11 @@ export const NavBar = memo(function NavBar() {
   return (
     <div className="flex items-center w-full px-2 py-4 bg-white">
       <React.Fragment key={drawerAnchor}>
-        <MenuIcon onClick={toggleDrawer(true)} />
+        <MenuIcon onClick={toggleDrawer(drawerAnchor, true)} />
         <Drawer
           anchor={drawerAnchor}
           open={drawerOpen}
-          onClose={toggleDrawer(false)}
+          onClose={toggleDrawer(drawerAnchor, false)}
         >
           {drawerList()}
         </Drawer>
