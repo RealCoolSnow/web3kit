@@ -12,4 +12,5 @@ git checkout "$1"
 fi
 
 git pull
+pm2 delete 'web3kit-kits-app'
 pnpm i && pnpm pm2start --filter "kits"
