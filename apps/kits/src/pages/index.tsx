@@ -9,7 +9,7 @@ import { NextSeo } from 'next-seo'
 const Home: NextPage = () => {
   const router = useRouter()
   const { t } = useTranslation('home')
-  const title = `${t('home')} - Web3Kit'`
+  const title = `${t('home')} - Web3Kit`
   const description = `${t('description')}`
   const url = `${process.env.NEXT_PUBLIC_SITE_ORIGIN}${router.asPath}`
   const cover = `${process.env.NEXT_PUBLIC_SITE_ORIGIN}/favicon.ico}`
