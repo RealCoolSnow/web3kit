@@ -11,6 +11,7 @@
     "dev": "turbo run dev --parallel --no-cache",
     "preinstall": "npx only-allow pnpm",
     "sort": "npx sort-package-json package.json apps/*/package.json packages/*/package.json packages/@shared/*/package.json",
+    "start": "turbo run start --parallel --no-cache",
     "test": "turbo run test"
   },
   "husky": {
