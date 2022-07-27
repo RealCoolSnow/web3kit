@@ -9,18 +9,18 @@
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build:js:cjs": "babel --config-file ./babel.cjs.json src --no-comments --extensions \".ts,.tsx\" --out-dir lib",
-    "build:types:cjs": "tsc --emitDeclarationOnly",
-    "build:js:esm": "babel --config-file ./babel.esm.json src --no-comments --extensions \".ts,.tsx\" --out-dir dist",
-    "build:types:esm": "tsc --emitDeclarationOnly --p tsconfig.esm.json",
+    "build": "npm run build:cjs && npm run build:esm",
     "build:cjs": "npm run build:js:cjs && npm run build:types:cjs",
     "build:esm": "npm run build:js:esm && npm run build:types:esm",
-    "build": "npm run build:cjs && npm run build:esm",
+    "build:js:cjs": "babel --config-file ./babel.cjs.json src --no-comments --extensions \".ts,.tsx\" --out-dir lib",
+    "build:js:esm": "babel --config-file ./babel.esm.json src --no-comments --extensions \".ts,.tsx\" --out-dir dist",
+    "build:types:cjs": "tsc --emitDeclarationOnly",
+    "build:types:esm": "tsc --emitDeclarationOnly --p tsconfig.esm.json",
     "clean": "rimraf dist && rimraf lib",
     "lint": "eslint src/**/* --fix",
+    "start": "npm run build:js -- --watch",
     "types:check": "tsc --noEmit",
-    "types:watch": "npm run types:check -- --watch",
-    "start": "npm run build:js -- --watch"
+    "types:watch": "npm run types:check -- --watch"
   },
   "devDependencies": {
     "@babel/cli": "^7.18.9",

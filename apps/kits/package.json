@@ -38,6 +38,9 @@
     "web3modal": "^1.9.8"
   },
   "devDependencies": {
+    "@headlessui/tailwindcss": "^0.1.0",
+    "@tailwindcss/forms": "^0.5.2",
+    "@tailwindcss/line-clamp": "^0.4.0",
     "@types/react": "^18.0.9",
     "@types/react-dom": "^18.0.5",
     "@types/react-redux": "^7.1.24",
@@ -47,7 +50,10 @@
     "eslint-config-next": "^12.1.6",
     "eslint-config-prettier": "^8.5.0",
     "postcss": "latest",
+    "postcss-import": "^14.1.0",
+    "tailwind-scrollbar-hide": "^1.1.7",
     "tailwindcss": "^3.0.24",
+    "tailwindcss-padding-safe": "^1.0.6",
     "typescript": "^4.7.2"
   }
 }

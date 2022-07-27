@@ -9,7 +9,7 @@ export const Header = memo(function Header() {
         className="sm:hidden absolute inset-0 flex items-center justify-center pointer-events-none"
         href="/"
       >
-        <Logo className="h-6 text-primary-200 pointer-events-auto" />
+        {/* <Logo className="h-6 text-primary-200 pointer-events-auto" /> */}
       </Anchor>
     </header>
   )

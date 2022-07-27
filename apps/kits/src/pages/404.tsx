@@ -16,7 +16,9 @@ export default function Page404() {
       <span className="sr-only">404, page not found</span>
       <span className="text-[#818086] text-center [&>a]:px-1 [&>a]:underline [&>a]:text-primary-200 [&>a]:underline-offset-1 [&>a]:transition-colors [&>a:hover]:text-primary-200/80 ">
         {t('page_not_found')}
-        <a href="/" className="ml-2">{t('go_home')}</a>
+        <a href="/" className="ml-2">
+          {t('go_home')}
+        </a>
       </span>
     </div>
   )
@@ -27,7 +29,7 @@ export const getStaticProps = async ({ locale }: { locale: string }) => {
 
   return {
     props: {
-      ...(await serverSideTranslations(locale, ['common','404'])),
+      ...(await serverSideTranslations(locale, ['404'])),
     },
   }
 }

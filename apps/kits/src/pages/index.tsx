@@ -3,18 +3,23 @@ import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import PageTitle from '@/components/common/PageTitle'
 import { withHomeLayout } from '@/layout/home'
+import { NextSeo } from 'next-seo'
 
 const Home: NextPage = () => {
   const router = useRouter()
-  const { t } = useTranslation('common')
-
+  const { t } = useTranslation('home')
+  const title = `${t('home')} - Web3Kit'`
+  const description = `${t('description')}`
+  const url = `${process.env.NEXT_PUBLIC_SITE_ORIGIN}${router.asPath}`
+  const cover = `${process.env.NEXT_PUBLIC_SITE_ORIGIN}/favicon.ico}`
   return (
-    <div>
-      <PageTitle title={t('home')} />
-      <div className="flex flex-col items-center"></div>
-    </div>
+    <>
+      <NextSeo title={title} description={description} canonical={url} />
+      <section>
+        <div className="flex flex-col items-center">hello</div>
+      </section>
+    </>
   )
 }
 
@@ -26,7 +31,7 @@ export const getStaticProps = async ({ locale }: StaticProps) => {
 
   return {
     props: {
-      ...(await serverSideTranslations(locale, ['common'])),
+      ...(await serverSideTranslations(locale, ['home'])),
     },
   }
 }
