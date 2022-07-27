@@ -9,6 +9,7 @@
     "dev": "next dev",
     "export": "next build && next export",
     "lint": "next lint",
+    "pm2start": "pm2 start npm --name web3kit-kits-app -- run start",
     "start": "npm run build && next start -p 8088"
   },
   "prettier": {
