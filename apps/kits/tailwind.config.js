@@ -14,11 +14,8 @@ module.exports = {
       colors: {
         current: 'currentColor',
         transparent: 'transparent',
-        primary: {
-          100: '#E1DAFE',
-          200: '#7053E5',
-          // 300: '#C23329',
-        },
+        primary: '#7053E5',
+        secondary: '#1d4ed8'
       },
       spacing: {
         4.5: '1.125rem',

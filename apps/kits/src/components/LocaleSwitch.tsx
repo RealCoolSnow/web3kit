@@ -20,10 +20,10 @@ const LocaleSwitch = () => {
           px-3
           py-1.5
           text-sm
-          font-normal
           text-gray-700
           bg-white bg-clip-padding bg-no-repeat
-          border border-solid border-gray-300
+          border border-solid border-white
+          font-sans
           rounded
           transition
           ease-in-out

@@ -10,14 +10,25 @@ const Home: NextPage = () => {
   const router = useRouter()
   const { t } = useTranslation('home')
   const title = `${t('home')} - Web3Kit`
-  const description = `${t('description')}`
+  const description = t('description')
   const url = `${process.env.NEXT_PUBLIC_SITE_ORIGIN}${router.asPath}`
   const cover = `${process.env.NEXT_PUBLIC_SITE_ORIGIN}/favicon.ico}`
+  const keywords = t('keywords')
   return (
     <>
-      <NextSeo title={title} description={description} canonical={url} />
+      <NextSeo
+        title={title}
+        description={description}
+        canonical={url}
+        additionalMetaTags={[
+          {
+            name: 'keywords',
+            content: `${keywords}`,
+          },
+        ]}
+      />
       <section>
-        <div className="flex flex-col items-center">hello</div>
+        <div className="flex flex-col items-center"></div>
       </section>
     </>
   )
@@ -31,7 +42,7 @@ export const getStaticProps = async ({ locale }: StaticProps) => {
 
   return {
     props: {
-      ...(await serverSideTranslations(locale, ['home'])),
+      ...(await serverSideTranslations(locale, ['common', 'home'])),
     },
   }
 }

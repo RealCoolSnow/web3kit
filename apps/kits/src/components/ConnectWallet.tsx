@@ -1,0 +1,61 @@
+import {
+  ConnectState,
+  IWeb3Event,
+  useEasyWeb3,
+  Web3Callback,
+  Web3EventType,
+} from '@/web3/core'
+import { CircularProgress } from '@mui/material'
+import { useTranslation } from 'next-i18next'
+import ExitToAppIcon from '@mui/icons-material/ExitToApp'
+
+const ConnectWallet = () => {
+  const { t, ready } = useTranslation(['common'])
+  const web3callback: Web3Callback = (e: IWeb3Event) => {
+    switch (e.type) {
+      case Web3EventType.Provider_Disconnect:
+        alert(typeof e.data == 'string' ? e.data : JSON.stringify(e.data))
+        break
+    }
+  }
+  const { easyWeb3, connectState, walletInfo } = useEasyWeb3(web3callback)
+  const onConnect = () => {
+    easyWeb3.connectWallet()
+  }
+  const onDisconnect = () => {
+    easyWeb3.disconnect()
+  }
+  return (
+    <>
+      {connectState == ConnectState.Disconnected && (
+        <button
+          className="text-sm bg-primary text-white px-4 py-1.5 btn rounded-full flex shadow shadow-gray-500/60"
+          onClick={onConnect}
+        >
+          <span className="block md:hidden">{ready ? t('connect') : ''}</span>
+          <span className="hidden md:block">
+            {ready ? t('connect_wallet') : ''}
+          </span>
+        </button>
+      )}
+      {connectState == ConnectState.Connecting && (
+        <CircularProgress color="secondary" size="1.2rem" />
+      )}
+      {connectState == ConnectState.Connected && (
+        <div className="flex items-center">
+          <div className="flex flex-col items-center btn">
+            <span className="text-primary">
+              {easyWeb3.getAddressShort(walletInfo.address)}
+            </span>
+            <span className="text-sm">
+              {easyWeb3.getBalanceShort(walletInfo.balance)}&nbsp;ETH
+            </span>
+          </div>
+          <ExitToAppIcon color="secondary" onClick={onDisconnect} />
+        </div>
+      )}
+    </>
+  )
+}
+
+export default ConnectWallet

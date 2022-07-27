@@ -6,7 +6,7 @@ import {
   Web3Callback,
   DEFAULT_WALLET_INFO,
   EasyWeb3,
-} from './'
+} from '.'
 
 export const useEasyWeb3 = (cb?: Web3Callback) => {
   const [connectState, setConnectState] = useState(ConnectState.Disconnected)
