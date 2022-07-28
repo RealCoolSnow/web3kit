@@ -26,7 +26,7 @@ type Anchor = 'top' | 'left' | 'bottom' | 'right'
 
 export const NavBar = memo(function NavBar() {
   const drawerAnchor = 'left'
-  const logoSize = 32
+  const logoSize = 36
   const [drawerOpen, setDrawerOpen] = useState(false)
   const { t } = useTranslation(['common'])
   const toggleDrawer =
@@ -78,7 +78,7 @@ export const NavBar = memo(function NavBar() {
     </Box>
   )
   return (
-    <div className="flex items-center w-full px-2 py-4 bg-white">
+    <div className="flex items-center w-full px-2 py-4 bg-white relative">
       <React.Fragment key={drawerAnchor}>
         <MenuIcon onClick={toggleDrawer(drawerAnchor, true)} />
         <Drawer
@@ -99,7 +99,7 @@ export const NavBar = memo(function NavBar() {
         />
         <span className="ml-2 hidden md:block">{t('app_name')}</span>
       </div>
-      <div className="ml-auto">
+      <div className="absolute right-2">
         <ConnectWallet />
       </div>
     </div>

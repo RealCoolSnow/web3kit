@@ -29,11 +29,11 @@ const ConnectWallet = () => {
     <>
       {connectState == ConnectState.Disconnected && (
         <button
-          className="text-sm bg-primary text-white px-4 py-1.5 btn rounded-full flex shadow shadow-gray-500/60"
+          className="text-sm font-semibold bg-primary text-white px-4 py-1.5 btn rounded-full flex shadow shadow-gray-500/60"
           onClick={onConnect}
         >
-          <span className="block md:hidden">{ready ? t('connect') : ''}</span>
-          <span className="hidden md:block">
+          <span className="block sm:hidden">{ready ? t('connect') : ''}</span>
+          <span className="hidden sm:block">
             {ready ? t('connect_wallet') : ''}
           </span>
         </button>
