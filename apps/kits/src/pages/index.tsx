@@ -5,14 +5,21 @@ import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { withHomeLayout } from '@/layout/home'
 import { NextSeo } from 'next-seo'
+import { KitAPI } from '@/types/api-types'
+import { baseUrl, siteOrigin } from '@/constants'
+import KitList from '@/components/Kit/list'
 
-const Home: NextPage = () => {
+type Props = {
+  data: KitAPI.HomeData
+}
+
+const Home: NextPage<Props> = ({ data }: Props) => {
   const router = useRouter()
   const { t } = useTranslation('home')
   const title = `${t('home')} - Web3Kit`
   const description = t('description')
-  const url = `${process.env.NEXT_PUBLIC_SITE_ORIGIN}${router.asPath}`
-  const cover = `${process.env.NEXT_PUBLIC_SITE_ORIGIN}/favicon.ico}`
+  const url = `${siteOrigin}${router.asPath}`
+  const cover = `${siteOrigin}/favicon.ico}`
   const keywords = t('keywords')
   return (
     <>
@@ -28,7 +35,11 @@ const Home: NextPage = () => {
         ]}
       />
       <section>
-        <div className="flex flex-col items-center"></div>
+        <div className="flex flex-col items-center">
+          <div className="mt-4">
+            <KitList kitList={data.kits} />
+          </div>
+        </div>
       </section>
     </>
   )
@@ -37,11 +48,13 @@ const Home: NextPage = () => {
 type StaticProps = {
   locale: string
 }
-export const getStaticProps = async ({ locale }: StaticProps) => {
-  console.log(locale)
 
+export const getStaticProps = async ({ locale }: StaticProps) => {
+  const res = await fetch(`${baseUrl}/api/home`)
+  const data = await res.json()
   return {
     props: {
+      data: data,
       ...(await serverSideTranslations(locale, ['common', 'home'])),
     },
   }

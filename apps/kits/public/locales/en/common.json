@@ -5,19 +5,19 @@
   "connect_wallet": "Connect Wallet",
   "kit": {
     "block_chain_explorer": {
-      "title": "Block Chain Explorer",
+      "name": "Block Chain Explorer",
       "desc": "Multi-chain blockchain browser entry"
     },
     "batch_transfer": {
-      "title": "Batch Transfer",
+      "name": "Batch Transfer",
       "desc": "Multi-chain batch transfer tool"
     },
     "token_detection": {
-      "title": "Token Detection",
+      "name": "Token Detection",
       "desc": "Multi-chain token contract detection tool"
     },
     "security_detection": {
-      "title": "Security Detection",
+      "name": "Security Detection",
       "desc": "Multi-chain zone authorization detection tool"
     }
   },

@@ -5,19 +5,19 @@
   "connect_wallet": "连接钱包",
   "kit": {
     "block_chain_explorer": {
-      "title": "区块链浏览器",
+      "name": "区块链浏览器",
       "desc": "多链区块链浏览器入口"
     },
     "batch_transfer": {
-      "title": "批量转账",
+      "name": "批量转账",
       "desc": "多链批量转账工具"
     },
     "token_detection": {
-      "title": "合约检测",
+      "name": "合约检测",
       "desc": "多链代币合约检测工具"
     },
     "security_detection": {
-      "title": "授权检测",
+      "name": "授权检测",
       "desc": "多链授权检测工具"
     }
   },
