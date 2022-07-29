@@ -6,8 +6,8 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { withHomeLayout } from '@/layout/home'
 import { NextSeo } from 'next-seo'
 import { KitAPI } from '@/types/api-types'
-import { baseUrl, siteOrigin } from '@/constants'
-import KitList from '@/components/Kit/list'
+import { siteOrigin } from '@/constants'
+import KitList from '@/components/ui/Kit/list'
 import { KIT_LIST_ALL } from '@/data/kit-list'
 
 type Props = {
