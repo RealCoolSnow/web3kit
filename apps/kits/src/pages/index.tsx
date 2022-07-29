@@ -8,6 +8,7 @@ import { NextSeo } from 'next-seo'
 import { KitAPI } from '@/types/api-types'
 import { baseUrl, siteOrigin } from '@/constants'
 import KitList from '@/components/Kit/list'
+import { KIT_LIST_ALL } from '@/data/kit-list'
 
 type Props = {
   data: KitAPI.HomeData
@@ -50,8 +51,8 @@ type StaticProps = {
 }
 
 export const getStaticProps = async ({ locale }: StaticProps) => {
-  const res = await fetch(`${baseUrl}/api/home`)
-  const data = await res.json()
+  //const res = await fetch(`${baseUrl}/api/home`)
+  const data = { kits: KIT_LIST_ALL } //await res.json()
   return {
     props: {
       data: data,
