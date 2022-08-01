@@ -3,6 +3,11 @@
   "connect": "连接",
   "wallet": "钱包",
   "connect_wallet": "连接钱包",
+  "home": {
+    "title": "首页",
+    "description": "Toolkits collection for Web3",
+    "keywords": "web3 tools, web3 kit, crypto, blockchain"
+  },
   "kit": {
     "block_chain_explorer": {
       "name": "区块链浏览器",

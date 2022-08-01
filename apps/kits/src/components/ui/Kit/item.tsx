@@ -12,7 +12,7 @@ const KitItem = ({ kitInfo }: Props) => {
   const { t } = useTranslation(['common'])
   return (
     <Link href={`/kit/${kitInfo.tag}`}>
-      <div className="flex flex-col items-center">
+      <div className="flex flex-col items-center cursor-pointer">
         <div className="w-12 h-12">
           <Image
             src={require(`@/assets/kit/${kitInfo.icon}`)}
@@ -20,7 +20,7 @@ const KitItem = ({ kitInfo }: Props) => {
           />
         </div>
         <span>{t(`kit.${kitInfo.tag}.name`)}</span>
-        <span className="text-gray-500">{t(`kit.${kitInfo.tag}.desc`)}</span>
+        <span className="text-gray-500 text-sm">{t(`kit.${kitInfo.tag}.desc`)}</span>
       </div>
     </Link>
   )

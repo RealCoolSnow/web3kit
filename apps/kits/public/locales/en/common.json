@@ -3,6 +3,11 @@
   "connect": "Connect",
   "wallet": "Wallet",
   "connect_wallet": "Connect Wallet",
+  "home": {
+    "title": "Home",
+    "description": "Toolkits collection for Web3",
+    "keywords": "web3 tools, web3 kit, crypto, blockchain"
+  },
   "kit": {
     "block_chain_explorer": {
       "name": "Block Chain Explorer",

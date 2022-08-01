@@ -16,12 +16,12 @@ type Props = {
 
 const Home: NextPage<Props> = ({ data }: Props) => {
   const router = useRouter()
-  const { t } = useTranslation('home')
-  const title = `${t('home')} - Web3Kit`
-  const description = t('description')
+  const { t } = useTranslation('common')
+  const title = `${t('home.title')} - Web3Kit`
+  const description = t('home.description')
   const url = `${siteOrigin}${router.asPath}`
   const cover = `${siteOrigin}/favicon.ico}`
-  const keywords = t('keywords')
+  const keywords = t('home.keywords')
   return (
     <>
       <NextSeo
@@ -37,7 +37,7 @@ const Home: NextPage<Props> = ({ data }: Props) => {
       />
       <section>
         <div className="flex flex-col items-center">
-          <div className="mt-4">
+          <div className="p-4">
             <KitList kitList={data.kits} />
           </div>
         </div>
@@ -56,7 +56,7 @@ export const getStaticProps = async ({ locale }: StaticProps) => {
   return {
     props: {
       data: data,
-      ...(await serverSideTranslations(locale, ['common', 'home'])),
+      ...(await serverSideTranslations(locale, ['common'])),
     },
   }
 }
