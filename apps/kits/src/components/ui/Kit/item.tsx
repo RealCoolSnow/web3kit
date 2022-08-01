@@ -19,8 +19,10 @@ const KitItem = ({ kitInfo }: Props) => {
             alt={t(`kit.${kitInfo.tag}.name`)}
           />
         </div>
-        <span>{t(`kit.${kitInfo.tag}.name`)}</span>
-        <span className="text-gray-500 text-sm">{t(`kit.${kitInfo.tag}.desc`)}</span>
+        <span className="text-center">{t(`kit.${kitInfo.tag}.name`)}</span>
+        <span className="text-gray-500 text-sm text-center line-clamp-2 md:line-clamp-none">
+          {t(`kit.${kitInfo.tag}.desc`)}
+        </span>
       </div>
     </Link>
   )
