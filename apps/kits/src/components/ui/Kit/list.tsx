@@ -11,7 +11,7 @@ const KitList = ({ kitList }: Props) => {
     return <KitItem kitInfo={item} key={item.tag} />
   })
   return (
-    <div className="grid gap-8 grid-cols-2 md:grid-cols-4 overflow-x-auto snap-x">{list}</div>
+    <div className="grid gap-4 grid-cols-2 md:grid-cols-4 overflow-x-auto snap-x">{list}</div>
   )
 }
 

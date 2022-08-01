@@ -62,7 +62,7 @@ const BlockChainExplorerPage: NextPage<Props> = ({ data }: Props) => {
         ]}
       />
       <section>
-        <div className="grid gap-8 grid-cols-2 md:grid-cols-4 overflow-x-auto snap-x p-4">
+        <div className="grid gap-4 grid-cols-2 md:grid-cols-4 overflow-x-auto snap-x p-4">
           {explorerList}
         </div>
       </section>
