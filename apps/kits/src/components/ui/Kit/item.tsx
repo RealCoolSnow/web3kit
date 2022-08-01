@@ -12,15 +12,15 @@ const KitItem = ({ kitInfo }: Props) => {
   const { t } = useTranslation(['common'])
   return (
     <Link href={`/kit/${kitInfo.tag}`}>
-      <div className="flex flex-col items-center cursor-pointer">
+      <div className="flex flex-col items-center cursor-pointer border border-gray-200 rounded-md shadow p-2">
         <div className="w-12 h-12">
           <Image
             src={require(`@/assets/kit/${kitInfo.icon}`)}
             alt={t(`kit.${kitInfo.tag}.name`)}
           />
         </div>
-        <span className="text-center">{t(`kit.${kitInfo.tag}.name`)}</span>
-        <span className="text-gray-500 text-sm text-center line-clamp-2 md:line-clamp-none">
+        <span className="text-center text-sm">{t(`kit.${kitInfo.tag}.name`)}</span>
+        <span className="text-gray-500 text-xs text-center line-clamp-2 md:line-clamp-none">
           {t(`kit.${kitInfo.tag}.desc`)}
         </span>
       </div>
