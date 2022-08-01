@@ -3,6 +3,8 @@
   "connect": "Connect",
   "wallet": "Wallet",
   "connect_wallet": "Connect Wallet",
+  "feedback": "Feedback",
+  "email": "Email",
   "home": {
     "title": "Home",
     "description": "Toolkits collection for Web3",

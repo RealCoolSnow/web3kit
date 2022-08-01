@@ -44,11 +44,11 @@ export const NavBar = memo(function NavBar() {
     }
   const menuList = [
     {
-      title: 'Home',
+      title: 'home.title',
       link: '/',
     },
     {
-      title: 'About',
+      title: 'feedback',
       link: '/about',
     },
   ]
@@ -68,7 +68,7 @@ export const NavBar = memo(function NavBar() {
                   {index == 0 ? <HomeIcon /> : <span></span>}
                   {index == 1 ? <InfoIcon /> : <span></span>}
                 </ListItemIcon>
-                <ListItemText primary={item.title} />
+                <ListItemText primary={t(item.title)} />
               </ListItemButton>
             </ListItem>
           </a>
