@@ -11,6 +11,7 @@ import { useRouter } from 'next/router'
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import SeoConfig from '@/components/SeoConfig'
 
 type Props = {
   data: {
@@ -22,13 +23,7 @@ const ExplorerItem = () => {
   return <div></div>
 }
 const BlockChainExplorerPage: NextPage<Props> = ({ data }: Props) => {
-  const router = useRouter()
   const { t } = useTranslation(['common'])
-  const title = `${t('kit.block_chain_explorer.name')} - Web3Kit`
-  const description = t('home.description')
-  const url = `${siteOrigin}${router.asPath}`
-  const cover = `${siteOrigin}/favicon.ico}`
-  const keywords = t('home.keywords')
   const explorerList = (data.list || []).map((item: BlockChainExplorerItem) => {
     return (
       <a
@@ -50,16 +45,10 @@ const BlockChainExplorerPage: NextPage<Props> = ({ data }: Props) => {
   })
   return (
     <>
-      <NextSeo
-        title={title}
-        description={description}
-        canonical={url}
-        additionalMetaTags={[
-          {
-            name: 'keywords',
-            content: `${keywords}`,
-          },
-        ]}
+      <SeoConfig
+        title={t('kit.block_chain_explorer.name')}
+        description={t('home.description')}
+        keywords={t('home.keywords')}
       />
       <section>
         <div className="grid gap-4 grid-cols-2 md:grid-cols-4 overflow-x-auto snap-x p-4">

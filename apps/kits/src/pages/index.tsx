@@ -1,39 +1,24 @@
 import type { NextPage } from 'next'
-import Image from 'next/image'
-import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { withHomeLayout } from '@/layout/home'
-import { NextSeo } from 'next-seo'
 import { KitAPI } from '@/types/api-types'
-import { siteOrigin } from '@/constants'
 import KitList from '@/components/ui/Kit/list'
 import { KIT_LIST_ALL } from '@/data/kit-list'
+import SeoConfig from '@/components/SeoConfig'
 
 type Props = {
   data: KitAPI.HomeData
 }
 
 const Home: NextPage<Props> = ({ data }: Props) => {
-  const router = useRouter()
   const { t } = useTranslation('common')
-  const title = `${t('home.title')} - Web3Kit`
-  const description = t('home.description')
-  const url = `${siteOrigin}${router.asPath}`
-  const cover = `${siteOrigin}/favicon.ico}`
-  const keywords = t('home.keywords')
   return (
     <>
-      <NextSeo
-        title={title}
-        description={description}
-        canonical={url}
-        additionalMetaTags={[
-          {
-            name: 'keywords',
-            content: `${keywords}`,
-          },
-        ]}
+      <SeoConfig
+        title={t('home.title')}
+        description={t('home.description')}
+        keywords={t('home.keywords')}
       />
       <section>
         <div className="flex flex-col items-center">
