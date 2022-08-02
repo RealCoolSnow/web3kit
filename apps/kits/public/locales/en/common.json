@@ -5,6 +5,7 @@
   "connect_wallet": "Connect Wallet",
   "feedback": "Feedback",
   "email": "Email",
+  "logout": "Logout",
   "home": {
     "title": "Home",
     "description": "Toolkits collection for Web3",
@@ -93,6 +94,8 @@
     "internet_computer": "Internet Computer",
     "lgcy_network": "LGCY Network",
     "cardano": "Cardano",
-    "terra": "Terra"
+    "terra": "Terra",
+    "okx": "OKX",
+    "harmony": "Harmony"
   }
 }

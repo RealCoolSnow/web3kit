@@ -5,16 +5,20 @@ import {
   Web3Callback,
   Web3EventType,
 } from '@/web3/core'
-import { CircularProgress } from '@mui/material'
+import Image from 'next/image'
+import { CircularProgress, Menu, MenuItem } from '@mui/material'
 import { useTranslation } from 'next-i18next'
-import ExitToAppIcon from '@mui/icons-material/ExitToApp'
+import imgAvatar from '@/assets/svg/avatar.svg'
+import { useState } from 'react'
 
 const ConnectWallet = () => {
   const { t, ready } = useTranslation(['common'])
+  const [anchorMenu, setAnchorMenu] = useState<null | HTMLElement>(null)
+  const menuOpened = Boolean(anchorMenu)
   const web3callback: Web3Callback = (e: IWeb3Event) => {
     switch (e.type) {
       case Web3EventType.Provider_Disconnect:
-        alert(typeof e.data == 'string' ? e.data : JSON.stringify(e.data))
+        // alert(typeof e.data == 'string' ? e.data : JSON.stringify(e.data))
         break
     }
   }
@@ -22,8 +26,15 @@ const ConnectWallet = () => {
   const onConnect = () => {
     easyWeb3.connectWallet()
   }
-  const onDisconnect = () => {
+  const onAvatarClick = (event: React.MouseEvent<HTMLDivElement>) => {
+    setAnchorMenu(event.currentTarget)
+  }
+  const onMenuClose = () => {
+    setAnchorMenu(null)
+  }
+  const onLogout = () => {
     easyWeb3.disconnect()
+    onMenuClose()
   }
   return (
     <>
@@ -43,15 +54,37 @@ const ConnectWallet = () => {
       )}
       {connectState == ConnectState.Connected && (
         <div className="flex items-center">
-          <div className="flex flex-col items-center btn">
-            <span className="text-primary">
+          <div className="btn cursor-pointer border border-gray-200 rounded-full px-2 py-1 shadow">
+            <Image
+              src={imgAvatar}
+              alt={walletInfo.address}
+              className="rounded-full"
+            />
+            <span
+              className="text-primary ml-2"
+              id="avatar-view"
+              aria-controls={menuOpened ? 'basic-menu' : undefined}
+              aria-haspopup="true"
+              aria-expanded={menuOpened ? 'true' : undefined}
+              onClick={onAvatarClick}
+            >
               {easyWeb3.getAddressShort(walletInfo.address)}
             </span>
-            <span className="text-sm">
+            {/* <span className="text-sm">
               {easyWeb3.getBalanceShort(walletInfo.balance)}&nbsp;ETH
-            </span>
+            </span> */}
           </div>
-          <ExitToAppIcon color="secondary" onClick={onDisconnect} />
+          <Menu
+            id="basic-menu"
+            anchorEl={anchorMenu}
+            open={menuOpened}
+            onClose={onMenuClose}
+            MenuListProps={{
+              'aria-labelledby': 'avatar-view',
+            }}
+          >
+            <MenuItem onClick={onLogout}>{t('logout')}</MenuItem>
+          </Menu>
         </div>
       )}
     </>

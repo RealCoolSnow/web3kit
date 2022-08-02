@@ -5,10 +5,10 @@ const KIT_LIST_ALL: KitAPI.KitInfo[] = [
     tag: 'block_chain_explorer',
     icon: 'block_chain_explorer.png',
   },
-  {
-    tag: 'batch_transfer',
-    icon: 'batch_transfer.png',
-  },
+  // {
+  //   tag: 'batch_transfer',
+  //   icon: 'batch_transfer.png',
+  // },
   {
     tag: 'token_detection',
     icon: 'token_detection.png',

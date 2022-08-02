@@ -5,6 +5,7 @@
   "connect_wallet": "连接钱包",
   "feedback": "反馈",
   "email": "邮箱",
+  "logout": "退出",
   "home": {
     "title": "首页",
     "description": "Toolkits collection for Web3",
@@ -93,6 +94,8 @@
     "internet_computer": "Internet Computer",
     "lgcy_network": "LGCY Network",
     "cardano": "Cardano",
-    "terra": "Terra"
+    "terra": "Terra",
+    "okx": "OKC",
+    "harmony": "Harmony"
   }
 }

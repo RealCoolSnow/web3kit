@@ -4,6 +4,7 @@ type Props = {
   data: any
 }
 const SecurityDetection: NextPage<Props> = ({ data }: Props) => {
+  
   return <div>SecurityDetection</div>
 }
 
