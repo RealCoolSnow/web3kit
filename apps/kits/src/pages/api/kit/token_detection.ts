@@ -1,8 +1,19 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 
-export default function handler(
+const apiUrl = ''
+
+/**
+ * doc: https://docs.gopluslabs.io/reference/token-security-api-response-detail/contract-security
+ */
+export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<any>
 ) {
-  res.status(200).json({})
+  const chain_id = req.query.chain_id || 1
+  const contract_addresses = req.query.contract_addresses || ''
+  const resp = await fetch(
+    `https://api.gopluslabs.io/api/v1/token_security/${chain_id}?contract_addresses=${contract_addresses}`
+  )
+  const data = await resp.json()
+  res.status(200).json({ data })
 }

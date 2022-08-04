@@ -6,6 +6,7 @@
   "feedback": "反馈",
   "email": "邮箱",
   "logout": "退出",
+  "loading": "加载中",
   "home": {
     "title": "首页",
     "description": "Toolkits collection for Web3",

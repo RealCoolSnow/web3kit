@@ -6,6 +6,7 @@
   "feedback": "Feedback",
   "email": "Email",
   "logout": "Logout",
+  "loading": "Loading",
   "home": {
     "title": "Home",
     "description": "Toolkits collection for Web3",

@@ -34,14 +34,14 @@ const config = {
     })
     return config
   },*/
-  async rewrites() {
-    return [
-      {
-        source: '/api/:path*',
-        destination: 'http://dev.yourserver/:path*', // Proxy to Backend
-      },
-    ]
-  },
+  // async rewrites() {
+  //   return [
+  //     {
+  //       source: '/api/:path*',
+  //       destination: 'http://dev.yourserver/:path*', // Proxy to Backend
+  //     },
+  //   ]
+  // },
 }
 
 module.exports = compose(
