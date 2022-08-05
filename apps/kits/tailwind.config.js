@@ -15,7 +15,8 @@ module.exports = {
         current: 'currentColor',
         transparent: 'transparent',
         primary: '#7524F9',
-        secondary: '#1d4ed8'
+        secondary: '#1d4ed8',
+        gray_text: '#919899'
       },
       spacing: {
         4.5: '1.125rem',

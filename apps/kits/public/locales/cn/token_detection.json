@@ -1,4 +1,18 @@
 {
   "input_contact_address_tip": "输入合约地址",
-  "check": "立即检测"
+  "check": "立即检测",
+  "check_report": "检测报告",
+  "base": {
+    "info": "基本信息",
+    "name": "代币名称",
+    "symbol": "代币符号",
+    "address": "合约地址",
+    "creator": "合约创建者",
+    "total": "总量",
+    "total_trade": "总流通量"
+  },
+  "security": {
+    "source_verified": "合约源代码已验证",
+    "no_proxy": "没有代理"
+  }
 }
