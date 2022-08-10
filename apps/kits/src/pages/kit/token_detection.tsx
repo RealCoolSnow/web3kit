@@ -140,7 +140,7 @@ const ContractPicker = ({ onCheck }: ContractPickerProps) => {
   )
 }
 
-type IContractDataItem = { [key: string]: string | [] }
+type IContractDataItem = { [key: string]: string | any }
 
 type ContractInfoPanelProps = {
   title: string
@@ -181,7 +181,7 @@ const getHolders = (data: IContractDataItem, k: 'holders' | 'lp_holders') => {
   const holders: { [key: string]: string } = {}
   if (data[k] && data[k].length > 0) {
     for (let i = 0; i < data.holders.length; i++) {
-      const holder = data[k][i]
+      const holder: { [key: string]: string } = data[k][i]
       holders[ellipseAddress(holder['address'], 6)] =
         numberToThousands(parseFloat(holder['balance']).toFixed(0)) +
         ' (' +
