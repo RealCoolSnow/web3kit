@@ -1,3 +1,4 @@
+import { initCors } from '@/utils/cors'
 import { NextApiRequest, NextApiResponse } from 'next'
 
 const apiUrl = ''
@@ -9,6 +10,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<any>
 ) {
+  await initCors(req, res)
   const chain_id = req.query.chain_id || 1
   const contract_addresses = (
     (req.query.contract_addresses || '') as string
