@@ -15,8 +15,15 @@
     "info": "持有人信息",
     "title": "持有人"
   },
+  "lp_holder": {
+    "info": "LP持有人信息",
+    "title": "LP持有人"
+  },
   "security": {
+    "info":"合约安全检测",
     "source_verified": "合约源代码已验证",
-    "no_proxy": "没有代理"
+    "no_proxy": "没有代理",
+    "source_not_verified": "合约源代码未验证",
+    "have_proxy": "存在代理"
   }
 }

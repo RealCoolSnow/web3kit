@@ -20,9 +20,7 @@ type ContractPickerProps = {
 const ContractPicker = ({ onCheck }: ContractPickerProps) => {
   const { t } = useTranslation(['common', 'token_detection'])
   const [chainIndex, setChainIndex] = useState(0)
-  const [address, setAddress] = useState(
-    ''
-  ) //0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48
+  const [address, setAddress] = useState('') //0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48
   const [anchorPop, setAnchorPop] = useState<HTMLDivElement | null>(null)
   const popOpened = Boolean(anchorPop)
   const popId = popOpened ? 'chain-popover' : undefined
@@ -149,6 +147,7 @@ type ContractInfoPanelProps = {
   ns: string
   subtitle?: string
   data: IContractDataItem
+  className?: string
 }
 
 const ContractInfoPanel = (props: ContractInfoPanelProps) => {
@@ -156,14 +155,19 @@ const ContractInfoPanel = (props: ContractInfoPanelProps) => {
   const list = Object.keys(props.data).map((key) => {
     return (
       <div key={key} className="my-2 text-sm w-full flex">
-        <span className="text-gray_text">{t(`${props.ns}.${key}`)}</span>
+        <span className="text-gray_text">
+          {props.ns === 'base' ? t(`${props.ns}.${key}`) : t(`${key}`)}
+        </span>
         <span className="ml-auto">{props.data[key]}</span>
       </div>
     )
   })
   return (
-    <div className="border border-gray-100 rounded p-2">
+    <div
+      className={`border border-gray-100 rounded p-2 ${props.className || ''}`}
+    >
       <div className="font-semibold">{props.title}</div>
+      {props.subtitle && <div className="mt-2">{props.subtitle}</div>}
       {list}
     </div>
   )
@@ -173,6 +177,21 @@ type ContractInfoProps = {
   data: IContractDataItem
 }
 
+const getHolders = (data: IContractDataItem, k: 'holders' | 'lp_holders') => {
+  const holders: { [key: string]: string } = {}
+  if (data[k] && data[k].length > 0) {
+    for (let i = 0; i < data.holders.length; i++) {
+      const holder = data[k][i]
+      holders[ellipseAddress(holder['address'], 6)] =
+        numberToThousands(parseFloat(holder['balance']).toFixed(0)) +
+        ' (' +
+        (parseFloat(holder['percent']) * 100).toFixed(2) +
+        '%' +
+        ')'
+    }
+  }
+  return holders
+}
 const ContractInfo = ({ data }: ContractInfoProps) => {
   const { t } = useTranslation('token_detection')
   const baseInfo = {
@@ -183,10 +202,67 @@ const ContractInfo = ({ data }: ContractInfoProps) => {
       parseFloat(data.total_supply as string).toFixed(0)
     ),
   }
+  const holderInfo = getHolders(data, 'holders')
+  const lpHolderInfo = getHolders(data, 'lp_holders')
   return (
     <div className="flex flex-col text-sm w-80 md:w-96">
       <span className="font-semibold my-4">{t('check_report')}</span>
       <ContractInfoPanel title={t('base.info')} data={baseInfo} ns="base" />
+      <div className="border border-gray-100 rounded p-2 mt-2">
+        <div className="font-semibold">{t('security.info')}</div>
+        <div className="mt-2 flex items-center">
+          <Image
+            src={require(`@/assets/kit/${
+              data.is_open_source === '1' ? 'ic_safe' : 'ic_warning'
+            }.png`)}
+            width={20}
+            height={20}
+            alt=""
+          />
+          <span className="ml-2">
+            {t(
+              data.is_open_source === '1'
+                ? 'security.source_verified'
+                : 'security.source_not_verified'
+            )}
+          </span>
+        </div>
+        <div className="mt-2 flex items-center">
+          <Image
+            src={require(`@/assets/kit/${
+              data.is_proxy === '0' ? 'ic_safe' : 'ic_warning'
+            }.png`)}
+            width={20}
+            height={20}
+            alt=""
+          />
+          <span className="ml-2">
+            {t(
+              data.is_proxy === '0'
+                ? 'security.no_proxy'
+                : 'security.have_proxy'
+            )}
+          </span>
+        </div>
+      </div>
+      <ContractInfoPanel
+        title={t('holder.info')}
+        data={holderInfo}
+        subtitle={`${t('holder.title')}: ${numberToThousands(
+          data.holder_count as string
+        )}`}
+        ns="holder"
+        className="mt-2"
+      />
+      <ContractInfoPanel
+        title={t('lp_holder.info')}
+        data={lpHolderInfo}
+        subtitle={`${t('lp_holder.title')}: ${numberToThousands(
+          data.lp_holder_count as string
+        )}`}
+        ns="lp_holder"
+        className="mt-2"
+      />
     </div>
   )
 }
@@ -196,7 +272,8 @@ const TokenDetection: NextPage = () => {
   const [loading, setLoading] = useState(false)
   const [message, setMessage] = useState('')
   const [contractInfo, setContractInfo] = useState<{}>(
-    TOKEN_DETECTION_TEST_DATA.data
+    // TOKEN_DETECTION_TEST_DATA.data
+    {}
   )
   const checkToken = async (chainId: number, address: string) => {
     setLoading(true)
