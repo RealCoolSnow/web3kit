@@ -1,4 +1,5 @@
 import { initCors } from '@/utils/cors'
+import { withSentry } from '@sentry/nextjs'
 import { NextApiRequest, NextApiResponse } from 'next'
 
 const apiUrl = ''
@@ -6,10 +7,7 @@ const apiUrl = ''
 /**
  * doc: https://docs.gopluslabs.io/reference/token-security-api-response-detail/contract-security
  */
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse<any>
-) {
+const handler = async (req: NextApiRequest, res: NextApiResponse<any>) => {
   await initCors(req, res)
   const chain_id = req.query.chain_id || 1
   const contract_addresses = (
@@ -27,3 +25,5 @@ export default async function handler(
     data: succeed ? data.result[contract_addresses] : {},
   })
 }
+
+export default withSentry(handler)
