@@ -1,3 +1,4 @@
+import SiteAnalytics from '@/components/third-party/SiteAnalytics'
 import { isProd } from '@/constants'
 import Document, {
   DocumentContext,
@@ -51,23 +52,18 @@ export default class MyDocument extends Document<DocumentProps> {
           <script dangerouslySetInnerHTML={{ __html: eCSTPolyfill }} />
           <NextScript />
           <Script
-            src="https://cdn-go.cn/aegis/aegis-sdk/latest/aegis.min.js"
-            strategy="beforeInteractive"
+            src={`https://www.googletagmanager.com/gtag/js?id=G-ZSBSFPKFQV`}
+            strategy="afterInteractive"
           />
-          {isProd && (
-            <Script id="aegis" strategy="afterInteractive">
-              {`
-             const aegis = new Aegis({
-              id: 'O5d6PfQOzGopYY6QG8', // 上报 id
-              uin: '', // 用户唯一 ID（可选）
-              reportApiSpeed: true, // 接口测速
-              reportAssetSpeed: true, // 静态资源测速
-              spa: true, // spa 应用页面跳转的时候开启 pv 计算
-              hostUrl: 'https://web3kit.app'
-            });
-          `}
-            </Script>
-          )}
+          <Script id="google-analytics" strategy="afterInteractive">
+            {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){window.dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-ZSBSFPKFQV');
+        `}
+          </Script>
         </body>
       </Html>
     )
