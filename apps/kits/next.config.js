@@ -2,20 +2,6 @@
 const compose = require('next-compose-plugins')
 const { i18n } = require('./next-i18next.config')
 const withBundleAnalyzer = require('@next/bundle-analyzer')({ enabled: process.env.ANALYZE == 'true' })
-const { withSentryConfig } = require('@sentry/nextjs')
-
-console.log('process.env.SENTRY_AUTH_TOKEN',process.env.SENTRY_AUTH_TOKEN)
-const sentryWebpackPluginOptions = {
-  // Additional config options for the Sentry Webpack plugin. Keep in mind that
-  // the following options are set automatically, and overriding them is not
-  // recommended:
-  //   release, url, org, project, authToken, configFile, stripPrefix,
-  //   urlPrefix, include, ignore
-  authToken: '37b0750c194311edb0c71eada291b71b',
-  silent: true, // Suppresses all logs
-  // For all available options, see:
-  // https://github.com/getsentry/sentry-webpack-plugin#options.
-};
 
 const config = {
   reactStrictMode: true,
@@ -58,8 +44,7 @@ const config = {
   },
 }
 
-module.exports = withSentryConfig(compose(
+module.exports = compose(
   [withBundleAnalyzer],
-  config,
-  sentryWebpackPluginOptions
-))
+  config
+)

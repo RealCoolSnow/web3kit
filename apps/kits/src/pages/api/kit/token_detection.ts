@@ -1,5 +1,4 @@
 import { initCors } from '@/utils/cors'
-import { withSentry } from '@sentry/nextjs'
 import { NextApiRequest, NextApiResponse } from 'next'
 
 const apiUrl = ''
@@ -26,4 +25,4 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<any>) => {
   })
 }
 
-export default withSentry(handler)
+export default handler
