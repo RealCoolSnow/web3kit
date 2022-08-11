@@ -2,6 +2,7 @@
   "input_contact_address_tip": "Enter contract address",
   "check": "Check",
   "check_report": "检测报告",
+  "sources_from": "Source of the data：gopluslabs.io",
   "base": {
     "info": "基本信息",
     "name": "代币名称",

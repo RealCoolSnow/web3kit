@@ -136,6 +136,7 @@ const ContractPicker = ({ onCheck }: ContractPickerProps) => {
       >
         {t('check', { ns: 'token_detection' })}
       </button>
+      <span className="mt-4 text-xs text-gray_text">{t('sources_from', { ns: 'token_detection' })}</span>
     </div>
   )
 }
