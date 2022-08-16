@@ -1,30 +1,30 @@
 {
   "input_contact_address_tip": "Enter contract address",
   "check": "Check",
-  "check_report": "检测报告",
+  "check_report": "Report",
   "sources_from": "Source of the data：gopluslabs.io",
   "base": {
-    "info": "基本信息",
-    "name": "代币名称",
-    "symbol": "代币符号",
-    "address": "合约地址",
-    "creator": "合约创建者",
-    "total": "总量",
-    "total_trade": "总流通量"
+    "info": "Basic Info",
+    "name": "Token Name",
+    "symbol": "Token Symbol",
+    "address": "Contract address",
+    "creator": "Contract Creator",
+    "total": "Total Supply",
+    "total_trade": "Total Circulation"
   },
   "holder": {
-    "info": "持有人信息",
-    "title": "持有人"
+    "info": "Holders Info",
+    "title": "Holders"
   },
   "lp_holder": {
-    "info": "LP持有人信息",
-    "title": "LP持有人"
+    "info": "LP Holders Info",
+    "title": "LP Holders"
   },
   "security": {
-    "info":"合约安全检测",
-    "source_verified": "合约源代码已验证",
-    "no_proxy": "没有代理",
-    "source_not_verified": "合约源代码未验证",
-    "have_proxy": "存在代理"
+    "info":"Smart Contract Security Check",
+    "source_verified": "Contract source code verified",
+    "no_proxy": "No proxy",
+    "source_not_verified": "Contract source code not been verified ",
+    "have_proxy": "Has proxy"
   }
 }
