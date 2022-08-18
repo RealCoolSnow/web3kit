@@ -3,6 +3,12 @@ const compose = require('next-compose-plugins')
 const { i18n } = require('./next-i18next.config')
 const withBundleAnalyzer = require('@next/bundle-analyzer')({ enabled: process.env.ANALYZE == 'true' })
 
+let removeConsole = []
+
+if (process.env.NODE_ENV === 'production') {
+  removeConsole.push("transform-remove-console")
+}
+
 const config = {
   reactStrictMode: true,
   i18n,
@@ -18,6 +24,11 @@ const config = {
   eslint: {
     // 构建时忽略eslint错误
     ignoreDuringBuilds: false,
+  },
+  build: {
+    babel: {
+      'plugins': removeConsole
+    }
   },
   //自定义webpack
   /*

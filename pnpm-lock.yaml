@@ -36,6 +36,7 @@ importers:
       '@walletconnect/web3-provider': ^1.7.8
       autoprefixer: latest
       axios: ^0.27.2
+      babel-plugin-transform-remove-console: ^6.9.4
       bignumber.js: ^9.0.2
       easy-hooks: workspace:*
       eslint: ^8.16.0
@@ -102,6 +103,7 @@ importers:
       '@types/react-redux': 7.1.24
       '@types/styled-components': 5.1.25
       autoprefixer: 10.4.8_postcss@8.4.16
+      babel-plugin-transform-remove-console: 6.9.4
       eslint: 8.20.0
       eslint-config-next: 12.2.3_he2ccbldppg44uulnyq4rwocfa
       eslint-config-prettier: 8.5.0_eslint@8.20.0
@@ -3660,6 +3662,10 @@ packages:
   /babel-plugin-syntax-jsx/6.18.0:
     resolution: {integrity: sha512-qrPaCSo9c8RHNRHIotaufGbuOBN8rtdC4QrrFFc43vyWCCz7Kl7GL1PGaXtMGQZUXrkCjNEgxDfmAuAabr/rlw==}
     dev: false
+
+  /babel-plugin-transform-remove-console/6.9.4:
+    resolution: {integrity: sha512-88blrUrMX3SPiGkT1GnvVY8E/7A+k6oj3MNvUtTIxJflFzXTw1bHkuJ/y039ouhFMp2prRn5cQGzokViYi1dsg==}
+    dev: true
 
   /backoff/2.5.0:
     resolution: {integrity: sha512-wC5ihrnUXmR2douXmXLCe5O3zg3GKIyvRi/hi58a/XyRxVI+3/yM0PYueQOZXPXQ9pxBislYkw+sF9b7C/RuMA==}
